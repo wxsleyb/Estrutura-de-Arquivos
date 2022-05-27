@@ -18,9 +18,10 @@ struct _Endereco
 
 long buscaBin(int inicio, int fim, FILE *f, char* cepProcurado, Endereco* e){
     int meio;
-    // Endereco enderecoLido;
+    int cont=0;
 
     while(inicio <= fim){
+        cont+=1;
         meio = (inicio + fim)/2;
         fseek(f, meio*sizeof(Endereco), SEEK_SET);
         fread(e, sizeof(Endereco), 1, f);
@@ -32,6 +33,7 @@ long buscaBin(int inicio, int fim, FILE *f, char* cepProcurado, Endereco* e){
         } else {
             fim = meio - 1;
         }
+        printf("Passos: %d\n\n", cont);
     }
     return -1;
 }
