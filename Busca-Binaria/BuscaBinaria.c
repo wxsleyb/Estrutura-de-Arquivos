@@ -52,7 +52,7 @@ int main(int argc, char**argv)
 	}
 
 	printf("Tamanho da Estrutura: %ld\n\n", sizeof(Endereco));
-	f = fopen("cep_ordenado.dat","rb");
+	f = fopen("CEP_RJ.dat","rb");
     fseek(f, 0, SEEK_END);
     tb = ftell(f);
     tr = tb/sizeof(Endereco);
