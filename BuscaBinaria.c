@@ -33,4 +33,17 @@ int main(int argc, char**argv)
 
 	printf("Tamanho da Estrutura: %ld\n\n", sizeof(Endereco));
 	f = fopen("cep_ordenado.dat","rb");
+    fseek(f, 0, SEEK_END);
+    tb = ftell(f);
+    tr = tb/sizeof(Endereco);
+    int inicio =0;
+    int fim = tr-1;
+    long verdadeiro = buscaBin(inicio, fim, f, argv[1], &e);
+    if(verdadeiro == -1){
+        printf("Nao encontrou\n");
+    } else {
+		printf("%.72s\n%.72s\n%.72s\n%.72s\n%.2s\n%.8s\n",e.logradouro,e.bairro,e.cidade,e.uf,e.sigla,e.cep);
+        
+    }
+	fclose(f);
 }
