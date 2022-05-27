@@ -16,6 +16,26 @@ struct _Endereco
 	char lixo[2]; // Ao Espaço no final da linha + quebra de linha
 };
 
+long buscaBin(int inicio, int fim, FILE *f, char* cepProcurado, Endereco* e){
+    int meio;
+    // Endereco enderecoLido;
+
+    while(inicio <= fim){
+        meio = (inicio + fim)/2;
+        fseek(f, meio*sizeof(Endereco), SEEK_SET);
+        fread(e, sizeof(Endereco), 1, f);
+        if (strncmp(cepProcurado, e->cep, 8) == 0){
+            return ftell(f);
+        } else if(strncmp(cepProcurado, e->cep, 8) > 0){
+            inicio = meio + 1;
+
+        } else {
+            fim = meio - 1;
+        }
+    }
+    return -1;
+}
+
 
 int main(int argc, char**argv)
 {
