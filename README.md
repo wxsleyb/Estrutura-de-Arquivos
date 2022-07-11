@@ -1,2 +1,2 @@
 # Estrutura-de-Arquivos
-Organização de estrutura de arquivos
+Repositório com trabalhos da disciplia de Organização de Estrutura de Arquivos
